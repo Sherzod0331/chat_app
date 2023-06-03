@@ -16,34 +16,49 @@
 
     <section class="section">
       <div class="row">
+
         {% for s in group %}
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">{{s.name}}</h5>
+              <h5 class="card-title">Group</h5>
 
-              <!-- Table with hoverable rows -->
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Last name</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Phone number</th>
-                  </tr>
-                </thead>
-                {% for c in s.student.all %}
-                  <tbody>
-                    <tr href="/chat">
-                      <th scope="row">1</th>
-                      <td>{{c.full_name}}</td>
-                      <td>{{c.l_name}}</td>
-                      <td>@{{c.username}}</td>
-                      <td><a href="tel: {{c.phone_number}}">{{c.phone_number}}</a></td>
-                    </tr>
-                  </tbody>
-                {% endfor %}
-              </table>
+              <!-- Default Accordion -->
+              <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="heading{{s.id}}">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{s.id}}" aria-expanded="false" aria-controls="collapse{{s.id}}">
+                      {{s.name}}
+                    </button>
+                  </h2>
+                  <div id="collapse{{s.id}}" class="accordion-collapse collapse" aria-labelledby="heading{{s.id}}" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <!-- Table with hoverable rows -->
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Last name</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Phone number</th>
+                          </tr>
+                        </thead>
+                        {% for c in s.student.all %}
+                          <tbody>
+                            <tr>
+                              <th scope="row">1</th>
+                              <td>{{c.full_name}}</td>
+                              <td>{{c.l_name}}</td>
+                              <td>@{{c.username}}</td>
+                              <td><a href="tel: {{c.phone_number}}">{{c.phone_number}}</a></td>
+                            </tr>
+                          </tbody>
+                        {% endfor %}
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- End Default Accordion Example -->
 
             </div>
           </div>

@@ -25,6 +25,7 @@ class Group(models.Model):
 
 class Teacher(models.Model):
     id = models.AutoField(primary_key=True)
+    position = models.CharField(max_length=100)
     username = models.CharField(max_length=100)
     full_name = models.CharField(max_length=50)
     l_name = models.CharField(max_length=50)

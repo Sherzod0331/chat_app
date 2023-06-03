@@ -18,7 +18,7 @@ def chat(request):
 
 def userprofile(request):
     context = {
-        
+        "teacher" : Teacher.objects.all(),        
     }
     return render(request, 'home/user-profile.html',context)
 
