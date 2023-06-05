@@ -45,13 +45,17 @@
                         </thead>
                         {% for c in s.student.all %}
                           <tbody>
-                            <tr>
-                              <th scope="row">1</th>
-                              <td>{{c.full_name}}</td>
-                              <td>{{c.l_name}}</td>
-                              <td>@{{c.username}}</td>
-                              <td><a href="tel: {{c.phone_number}}">{{c.phone_number}}</a></td>
-                            </tr>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>
+                                  <a href="{% url 'chat' %}">
+                                    {{c.full_name}}
+                                  </a>
+                                </td>
+                                <td>{{c.l_name}}</td>
+                                <td>@{{c.username}}</td>
+                                <td><a href="tel: {{c.phone_number}}">{{c.phone_number}}</a></td>
+                              </tr>
                           </tbody>
                         {% endfor %}
                       </table>

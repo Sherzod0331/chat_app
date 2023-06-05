@@ -26,6 +26,7 @@ class Group(models.Model):
 class Teacher(models.Model):
     id = models.AutoField(primary_key=True)
     position = models.CharField(max_length=100)
+    about = models.CharField(max_length=100)
     username = models.CharField(max_length=100)
     full_name = models.CharField(max_length=50)
     l_name = models.CharField(max_length=50)
@@ -46,3 +47,19 @@ class Message(models.Model):
     
     def __str__(self) -> str:
         return self.sender
+    
+class role(models.Model):
+    name = models.CharField(max_length=100)
+    
+    def __str__(self) -> str:
+        return self.name
+    
+    
+    
+class login_required(models.Model):
+    username = models.CharField(max_length=100)
+    password = models.CharField(max_length=200)
+    role = models.ManyToManyField(role, blank=True)
+    
+    def __str__(self) -> str:
+        return self.username

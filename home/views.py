@@ -16,6 +16,12 @@ def chat(request):
     }
     return render(request, 'home/chat.html',context)
 
+def login(request):
+    context = {
+        
+    }
+    return render(request, 'login.html',context)
+
 def userprofile(request):
     context = {
         "teacher" : Teacher.objects.all(),        
